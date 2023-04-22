@@ -10,6 +10,7 @@ export class TodoService {
   // @TODO Need to move apiUrl in env file.
   private apiUrl = 'https://dummyjson.com';
 
+  // make private todoSubject which can change by service only.
   private todoSubject = new BehaviorSubject<Todo[]>([]);
 
   todos$: Observable<Todo[]> = this.todoSubject.asObservable();
@@ -39,5 +40,28 @@ export class TodoService {
     return this.todos$.pipe(
       map((todos) => todos.filter((course) => course.completed == isCompleted))
     );
+  }
+
+  /**
+   *
+   * @param item Object
+   * API call is completed because as per task API call not required.
+   * Change complete status and emit updated data
+   */
+  markCompleted(item: Todo) {
+    // @TODO if API call required below code can use
+    // return this.http.put<TodoItem>(`https://dummyjson.com/todo/${todoItem.id}`, {completed: true}).pipe(
+    //   map((res: any) => res['todos']),
+    //   tap((todos) => //emit data )
+    // );
+
+    // emit update array
+    const updatedList = this.todoSubject.getValue().map((todo) => {
+      if (todo.id === item.id) {
+        return { ...todo, completed: true };
+      }
+      return todo;
+    });
+    this.todoSubject.next(updatedList);
   }
 }
