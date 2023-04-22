@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { Todo } from 'src/app/model/todo';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,20 +16,20 @@ export class TodoService {
 
   todos$: Observable<Todo[]> = this.todoSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private loading: LoadingService) {}
 
   /**
    * Call api and getTodoList and emit it using todoSubject
    *
    */
   getTodoList() {
-    return this.http
-      .get<Todo[]>(`${this.apiUrl}/todo`)
-      .pipe(
-        map((res: any) => res['todos']),
-        tap((todos) => this.todoSubject.next(todos))
-      )
-      .subscribe();
+    const todoList$ = this.http.get<Todo[]>(`${this.apiUrl}/todo`).pipe(
+      map((res: any) => res['todos']),
+      tap((todos) => this.todoSubject.next(todos))
+    );
+
+    // no need to destroy http subscription, since httpClient emit only once
+    this.loading.showLoaderUntilCompleted(todoList$).subscribe();
   }
 
   /**
