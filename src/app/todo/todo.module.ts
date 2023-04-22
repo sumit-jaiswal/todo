@@ -5,15 +5,8 @@ import { TodoRoutingModule } from './todo-routing.module';
 import { TodoComponent } from './todo.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 
-
 @NgModule({
-  declarations: [
-    TodoComponent,
-    TodoListComponent
-  ],
-  imports: [
-    CommonModule,
-    TodoRoutingModule
-  ]
+  declarations: [TodoComponent, TodoListComponent],
+  imports: [CommonModule, TodoRoutingModule],
 })
-export class TodoModule { }
+export class TodoModule {}
