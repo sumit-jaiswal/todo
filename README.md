@@ -17,4 +17,5 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Live preview
 
 [Live Preview](https://github-todo-list-2023.stackblitz.io/)
+
 [Live Editor](https://stackblitz.com/edit/github-todo-list-2023)
