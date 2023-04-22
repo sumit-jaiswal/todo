@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(assets/css/common.scss);
+@import url(assets/css/todo.scss);
+
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  font-weight: lighter;
+}
