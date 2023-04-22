@@ -19,7 +19,6 @@ export class TodoListComponent implements OnInit {
    * this function will call on checkbox selection
    */
   onItemCheck(todo: Todo) {
-    console.log(todo);
     this.todoService.markCompleted(todo);
   }
 }
