@@ -22,7 +22,7 @@ export class TodoService {
    * Call api and getTodoList and emit it using todoSubject
    *
    */
-  getTodoList() {
+  getTodoList(): Observable<Todo[]> {
     const todoList$ = this.http.get<Todo[]>(`${this.apiUrl}/todo`).pipe(
       map((res: any) => res['todos']),
       tap((todos) => this.todoSubject.next(todos))
@@ -30,6 +30,7 @@ export class TodoService {
 
     // no need to destroy http subscription, since httpClient emit only once
     this.loading.showLoaderUntilCompleted(todoList$).subscribe();
+    return todoList$;
   }
 
   /**
