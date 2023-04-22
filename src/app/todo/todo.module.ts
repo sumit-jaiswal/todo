@@ -11,12 +11,6 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [TodoComponent, TodoListComponent, CompletedListComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    TodoRoutingModule,
-    HttpClientModule,
-    SharedModule,
-  ],
+  imports: [CommonModule, FormsModule, TodoRoutingModule, SharedModule],
 })
 export class TodoModule {}
