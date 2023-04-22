@@ -3,4 +3,7 @@
   <div class="card card-shadow" *ngFor="let item of todos">
     {{ item.todo }}
   </div>
+  <div class="no-result" *ngIf="todos && todos.length < 1">
+    No task started yet !!
+  </div>
 </div>
