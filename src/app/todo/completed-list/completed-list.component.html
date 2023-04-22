@@ -1,4 +1,6 @@
-<div *ngFor="let todo of todos">
-  {{ todo.todo }}
-  <hr />
+<h3 class="align-center">I did it!</h3>
+<div class="flex-container">
+  <div class="card card-shadow" *ngFor="let item of todos">
+    {{ item.todo }}
+  </div>
 </div>

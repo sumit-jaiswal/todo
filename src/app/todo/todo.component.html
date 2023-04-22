@@ -1,9 +1,11 @@
-<app-completed-list
-  *ngIf="completedList$ | async as completedList"
-  [todos]="completedList"
-></app-completed-list>
+<div class="container">
+  <app-completed-list
+    *ngIf="completedList$ | async as completedList"
+    [todos]="completedList"
+  ></app-completed-list>
 
-<app-todo-list
-  *ngIf="todoList$ | async as todoList"
-  [todos]="todoList"
-></app-todo-list>
+  <app-todo-list
+    *ngIf="todoList$ | async as todoList"
+    [todos]="todoList"
+  ></app-todo-list>
+</div>
