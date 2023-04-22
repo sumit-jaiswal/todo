@@ -9,6 +9,8 @@ import { Todo } from '../model/todo';
   styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent implements OnInit {
+  fullName: string = 'Sumit Jaiswal';
+
   todoList$: Observable<Todo[]> | undefined;
   completedList$: Observable<Todo[]> | undefined;
 
